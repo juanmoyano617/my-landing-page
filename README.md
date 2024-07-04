@@ -25,7 +25,7 @@
         .slide-container {
             display: flex;
             flex-direction: row;
-            overflow-x: auto;
+            overflow-x: hidden;
             scroll-snap-type: x mandatory;
         }
         .slide {
@@ -39,6 +39,7 @@
             align-items: center;
             padding: 20px;
             box-sizing: border-box;
+            transition: transform 1s ease;
         }
         .container {
             background-color: #ffffff;
@@ -61,13 +62,34 @@
             padding-left: 20px;
             text-align: left;
         }
+        .map {
+            width: 100%;
+            height: 400px;
+            background: url('mapa-placeholder.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        .marker {
+            position: absolute;
+            background-color: #FFD700;
+            color: #333;
+            padding: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .marker:hover {
+            background-color: #FFA500;
+        }
+        .marker1 { top: 20%; left: 30%; }
+        .marker2 { top: 50%; left: 50%; }
+        .marker3 { top: 70%; left: 20%; }
     </style>
 </head>
 <body>
     <div class="header">
         <img src="logo-combee.png" alt="COMBEE Logo"> <!-- Asegúrate de tener el logo guardado como logo-combee.png -->
     </div>
-    <div class="slide-container">
+    <div class="slide-container" id="slide-container">
         <div class="slide">
             <div class="container">
                 <h1>COMBEE</h1>
@@ -97,5 +119,25 @@
             </div>
         </div>
     </div>
+    <div class="map">
+        <div class="marker marker1">Fácil acceso a autos</div>
+        <div class="marker marker2">Precios competitivos</div>
+        <div class="marker marker3">Soporte 24/7</div>
+    </div>
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlides() {
+            slideIndex++;
+            if (slideIndex >= totalSlides) {
+                slideIndex = 0;
+            }
+            document.getElementById('slide-container').style.transform = 'translateX(' + (-slideIndex * 100) + 'vw)';
+        }
+
+        setInterval(showSlides, 5000); // Cambiar cada 5 segundos
+    </script>
 </body>
 </html>
