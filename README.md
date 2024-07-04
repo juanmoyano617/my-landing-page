@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>COMBEE - Landing Page</title>
+    <title>COMBEE</title>
     <style>
         body {
             font-family: Arial, sans-serif;
